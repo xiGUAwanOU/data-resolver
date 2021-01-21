@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+npx tsc
+
+git status -s dist
+
+if [ -n "$(git ls-files --modified --others --exclude-standard dist)" ]
+then
+  echo "Please also commit changes to the 'dist' path!!"
+  exit 1
+fi
